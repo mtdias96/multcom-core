@@ -19,8 +19,12 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(8)
-  @MaxLength(16)
+  @MinLength(8, {
+    message: 'A senha precisa ter no minimo 8 caracteres',
+  })
+  @MaxLength(16, {
+    message: 'A senha precisa ter no maximo 16 caracteres',
+  })
   @Matches(/^(?=.*[A-Z])(?=.*[!@#$&*])/, {
     message:
       'A senha deve conter pelo menos uma letra maiúscula e um caractere especial',
