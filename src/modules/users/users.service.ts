@@ -11,7 +11,9 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     const { email, name, password } = createUserDto;
 
-    const emailTaken = await this.usersRepository.findByEmail(email);
+    const emailTaken = await this.usersRepository.findUnique({
+      where: { email },
+    });
 
     if (emailTaken) {
       throw new ConflictException('O email já está sendo usado');
