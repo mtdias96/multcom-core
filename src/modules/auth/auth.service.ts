@@ -60,8 +60,6 @@ export class AuthService {
       sub: user.id,
     });
 
-    console.log(acessToken);
-
     return {
       acessToken,
     };
